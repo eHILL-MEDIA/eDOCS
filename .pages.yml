@@ -1,12 +1,13 @@
-# Medien-Verzeichnis
+# Medien-Verzeichnis (Astro legt statische Medien in "public")
 media:
-  input: public/media
-  output: /media
+  input: public/assets
+  output: /assets
 
+# Inhalts-Typen für AstroPaper
 items:
   - type: collection
     name: blog
-    label: 📝 Dokumente & Posts
+    label: 📝 Blog & Dokumente
     path: src/content/blog
     filename: "{year}-{month}-{day}-{slug}.md"
     extension: md
@@ -16,21 +17,21 @@ items:
         type: string
         label: Titel
         required: true
-      - name: pubDatetime
-        type: date
-        label: Veröffentlichungsdatum
-        default: now
       - name: author
         type: string
         label: Autor
-        default: "eHILL MEDIA"
-      - name: description
-        type: string
-        label: Kurzbeschreibung (SEO)
+        default: "Sat Naing" # Oder dein Name/Firma
+      - name: pubDatetime
+        type: date
+        label: Veröffentlichungsdatum (ISO)
+        default: now
         required: true
+      - name: modDatetime
+        type: date
+        label: Letztes Update (Optional)
       - name: postSlug
         type: string
-        label: URL-Slug (z.B. mein-beitrag)
+        label: Eigener URL-Slug (Optional)
       - name: featured
         type: boolean
         label: Auf Startseite hervorheben?
@@ -39,7 +40,20 @@ items:
         type: boolean
         label: Als Entwurf speichern?
         default: false
+      - name: tags
+        type: list
+        label: Tags / Schlagworte
+        default: ["allgemein"]
+      - name: description
+        type: string
+        label: Kurzbeschreibung (SEO)
+        required: true
+      - name: body
+        type: rich-text
+        label: Inhalt (Markdown Editor)
+        required: true
 
+# Website-Einstellungen (falls du die site.json nutzt, sonst weglassen)
   - type: file
     name: site
     label: ⚙️ Website Einstellungen
@@ -48,17 +62,13 @@ items:
     fields:
       - name: title
         type: string
-        label: Website Name (Titel)
+        label: Website Name
         required: true
       - name: description
         type: text
-        label: Globale Beschreibung
-      - name: url
-        type: string
-        label: Website URL
-        placeholder: "https://docs.ehill.de"
+        label: Beschreibung
 
-# Automatisierung nach dem Speichern
+# Verbindung zur GitHub Action für Astro
 actions:
   - name: eDOCS
     label: 🚀 eDOCS live schalten (Build & Deploy)

@@ -1,22 +1,66 @@
+# Medien-Verzeichnis
 media:
   input: public/media
-  output: /
-content:
-  - name: posts
-    label: Posts
-    type: collection
+  output: /media
+
+# Inhaltstypen
+items:
+  - type: collection
+    name: blog
+    label: 📝 Dokumente & Posts
     path: src/content/blog
-    view:
-      fields: [ title, draft, date ]
+    filename: "{year}-{month}-{day}-{slug}.md"
+    extension: md
+    format: frontmatter
     fields:
-      - { name: author, label: Author, type: string }
-      - { name: pubDatetime, label: Date, type: date }
-      - { name: modDatetime, label: Date, type: date }
-      - { name: title, label: Title, type: string, required: true }
-      - { name: ogImage, label: Title, type: string }
-      - { name: slug, label: Slug, type: string }
-      - { name: featured, label: Featured, type: boolean }
-      - { name: draft, label: Draft, type: boolean }
-      - { name: tags, label: Tags, type: string, list: true }
-      - { name: description, label: Description, type: string }
-      - { name: body, label: Body, type: rich-text }
+      - name: title
+        type: string
+        label: Titel
+        required: true
+      - name: pubDatetime
+        type: date
+        label: Veröffentlichungsdatum
+        default: now
+      - name: author
+        type: string
+        label: Autor
+        default: "eHILL MEDIA"
+      - name: description
+        type: string
+        label: Kurzbeschreibung (SEO)
+        required: true
+      - name: postSlug
+        type: string
+        label: URL-Slug (z.B. mein-beitrag)
+      - name: featured
+        type: boolean
+        label: Auf Startseite hervorheben?
+        default: false
+      - name: draft
+        type: boolean
+        label: Als Entwurf speichern?
+        default: false
+
+  - type: file
+    name: site
+    label: ⚙️ Website Einstellungen
+    path: src/_data/site.json
+    format: json
+    fields:
+      - name: title
+        type: string
+        label: Website Name (Titel)
+        required: true
+      - name: description
+        type: text
+        label: Globale Beschreibung
+      - name: url
+        type: string
+        label: Website URL
+        placeholder: "https://docs.ehill.de"
+
+# Automatisierung nach dem Speichern
+actions:
+  - name: eDOCS
+    label: 🚀 eDOCS live schalten (Build & Deploy)
+    workflow: edocs

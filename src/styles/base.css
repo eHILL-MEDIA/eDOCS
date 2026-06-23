@@ -3,6 +3,157 @@
 @tailwind utilities;
 
 @layer base {
+  /* ===== CSS Custom Properties & Design Tokens ===== */
+  :root,
+  html[data-theme="light"] {
+    --color-fill: 251, 254, 251;
+    --color-text-base: 40, 39, 40;
+    --color-accent: 0, 108, 172;
+    --color-card: 230, 230, 230;
+    --color-card-muted: 205, 205, 205;
+    --color-border: 236, 233, 233;
+    
+    color-scheme: light;
+  }
+
+  html[data-theme="dark"] {
+    --color-fill: 33, 39, 55;
+    --color-text-base: 234, 237, 243;
+    --color-accent: 255, 107, 1;
+    --color-card: 52, 63, 96;
+    --color-card-muted: 138, 51, 2;
+    --color-border: 171, 75, 8;
+    
+    color-scheme: dark;
+  }
+
+  /* Globaler, performanter Farbübergang beim Theme-Wechsel */
+  html {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    /* Moderne standardisierte Scrollbar für Firefox/Evers (Zweifarbig: Thumb Track) */
+    scrollbar-color: rgb(var(--color-card)) rgb(var(--color-fill));
+  }
+
+  body {
+    @apply flex min-h-[100svh] flex-col bg-skin-fill font-mono text-skin-base 
+           selection:bg-skin-accent/70 selection:text-skin-inverted;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* ===== Theme Toggle SVG Logik (Kompakt & Modern) ===== */
+  #sun-svg, 
+  html[data-theme="dark"] #moon-svg {
+    display: none;
+  }
+  #moon-svg, 
+  html[data-theme="dark"] #sun-svg {
+    display: block;
+  }
+
+  /* ===== Layout & Typografie ===== */
+  section,
+  footer {
+    @apply mx-auto w-full max-w-3xl px-4;
+  }
+
+  a, .focus-outline {
+    @apply outline-2 outline-offset-1 outline-skin-fill 
+           focus-visible:no-underline focus-visible:outline-dashed;
+  }
+
+  /* ===== SVG Icons ===== */
+  svg {
+    @apply inline-block h-6 w-6 fill-skin-base transition-colors duration-200 group-hover:fill-skin-accent;
+  }
+
+  svg.icon-tabler {
+    @apply fill-transparent stroke-current stroke-2 opacity-90 
+           scale-125 sm:scale-110 group-hover:fill-transparent;
+  }
+
+  /* ===== Tailwind Typography (Prose Customization) ===== */
+  .prose {
+    /* Headings & Text */
+    @apply prose-headings:!mb-3 prose-headings:!text-skin-base prose-h3:italic prose-p:!text-skin-base;
+    /* Links */
+    @apply prose-a:!text-skin-base prose-a:!decoration-dashed prose-a:underline-offset-8 hover:prose-a:text-skin-accent;
+    /* Blockquotes & Figures */
+    @apply prose-blockquote:!border-l-skin-accent prose-blockquote:border-opacity-50 prose-blockquote:opacity-80
+           prose-figcaption:!text-skin-base prose-figcaption:opacity-70 prose-strong:!text-skin-base;
+    /* Inline Code */
+    @apply prose-code:rounded prose-code:bg-skin-card/75 prose-code:p-1 
+           prose-code:before:!content-none prose-code:after:!content-none;
+    /* Listen & Markers */
+    @apply prose-ol:!text-skin-base prose-ul:overflow-x-clip prose-ul:!text-skin-base prose-li:marker:!text-skin-accent;
+    /* Tabellen & Linien */
+    @apply prose-table:text-skin-base prose-th:border prose-th:border-skin-line prose-td:border prose-td:border-skin-line;
+    /* Divider & Bilder */
+    @apply prose-img:!my-2 prose-img:mx-auto prose-img:border-2 prose-img:border-skin-line prose-hr:!border-skin-line;
+  }
+
+  .prose a {
+    @apply break-words;
+  }
+
+  .prose :is(thead th, tbody td, tfoot td):first-child {
+    padding-left: 0.5714286em;
+  }
+
+  .prose h2#table-of-contents {
+    @apply mb-2;
+    
+    /* Blendet das direkt darauffolgende <p> Element elegant aus */
+    & + p {
+      @apply hidden;
+    }
+  }
+
+  .prose details {
+    @apply inline-block cursor-pointer select-none text-skin-base;
+    
+    & summary {
+      @apply focus-outline;
+    }
+  }
+
+  /* ===== Legacy Webkit Scrollbar (Chrome, Safari, Edge) ===== */
+  ::-webkit-scrollbar {
+    @apply w-3;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-skin-fill;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-skin-card transition-colors;
+    
+    &:hover {
+      @apply bg-skin-card-muted;
+    }
+  }
+
+  /* Code-Wrapping Optimierungen */
+  code,
+  blockquote {
+    overflow-wrap: break-word;
+  }
+
+  pre > code {
+    white-space: pre;
+  }
+}
+
+@layer components {
+  .display-none {
+    @apply hidden;
+  }
+}@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
   :root,
   html[data-theme="light"] {
     --color-fill: 251, 254, 251;

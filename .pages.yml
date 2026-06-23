@@ -3,7 +3,6 @@ media:
   input: public/media
   output: /media
 
-# Inhaltstypen
 items:
   - type: collection
     name: blog

@@ -1,62 +1,30 @@
-# 1. Define where uploaded media/images go
-media: public/assets
-
-# 2. Define your papers/posts collection
+media:
+  input: public
+  output: /
 content:
   - name: posts
-    label: Papers & Posts
+    label: Posts
     type: collection
-    path: src/content/blog         # AstroPaper stores posts here
-    format: yaml-frontmatter      # Tells CMS to parse the standard MD frontmatter
-    filename: "{year}-{month}-{day}-{title}.md" # Automatically formats new files
-    
-    # Customize the columns shown in your dashboard list view
+    path: src/content/blog
     view:
-      fields: [title, pubDatetime, draft]
-      primary: title
-      sort: [pubDatetime]
-      order: desc
-
-    # Map the frontmatter fields used by AstroPaper's schema
+      fields: [ title, draft, date ]
     fields:
-      - name: title
-        label: Title
-        type: string
-        required: true
-
-      - name: author
-        label: Author
-        type: string
-        default: "Your Name"
-
-      - name: pubDatetime
-        label: Publication Date
-        type: date
-        required: true
-
-      - name: modDatetime
-        label: Last Modified Date
-        type: date
-
-      - name: description
-        label: Short Summary / Abstract
-        type: string
-        required: true
-
-      - name: tags
-        label: Tags
-        type: list # Creates an array of tags (e.g., physics, astrodynamics)
-
-      - name: ogImage
-        label: Social Share Image (OG Image)
-        type: image
-
-      - name: draft
-        label: Save as Draft?
-        type: boolean
-        default: false
-
-      # The actual content area of your paper
-      - name: body
-        label: Paper Content
-        type: rich-text
+      - { name: author, label: Author, type: string }
+      - { name: pubDatetime, label: Date, type: date }
+      - { name: modDatetime, label: Date, type: date }
+      - { name: title, label: Title, type: string, required: true }
+      - { name: ogImage, label: Title, type: string }
+      - { name: slug, label: Slug, type: string }
+      - { name: featured, label: Featured, type: boolean }
+      - { name: draft, label: Draft, type: boolean }
+      - { name: tags, label: Tags, type: string, list: true }
+      - { name: description, label: Description, type: string }
+      - { name: body, label: Body, type: rich-text }
+  - name: about
+    label: About page
+    type: file
+    path: src/pages/about.md
+    fields:
+      - { name: layout, type: string, hidden: true, default: "../layouts/AboutLayout.astro" }
+      - { name: title, label: Title, type: string }
+      - { name: body, label: Body, type: rich-text, options: { input: public/assets, output: /assets } }

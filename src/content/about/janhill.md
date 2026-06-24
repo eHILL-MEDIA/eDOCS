@@ -7,6 +7,8 @@ ogImage: Über mich
 slug: about
 featured: false
 draft: false
+tags:
+  - Jan Hill
 description: Wer hinter AS219418 und diesem technischen Logbuch steckt.
 ---
 # Hallo, ich bin Jan Hill

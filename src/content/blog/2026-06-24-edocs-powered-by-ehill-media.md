@@ -6,7 +6,7 @@ title: eDOCS powered by eHILL MEDIA
 ogImage: eDOCS-LIVE
 slug: edocs-willkommen-auf-der-documentation
 featured: true
-draft: false
+draft: true
 description: eDOCS ist nun Live!
 ---
 s

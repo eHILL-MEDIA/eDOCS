@@ -13,6 +13,8 @@ description: Wer hinter AS219418 und diesem technischen Logbuch steckt.
 ---
 # Hallo, ich bin Jan Hill
 
+![](/assets/jan_hill.jpg)
+
 Ich bin Technik-Enthusiast, Linux-Systemtechniker und passioniertes Core-Member der weltweiten Netzwerk-Community. Dieses Blog dient als mein digitales Logbuch – ein Ort, an dem ich komplexe Setups, tiefgehende Netzwerk-Architekturen und die täglichen Herausforderungen im Umgang mit globalem Routing dokumentiere.
 
 Mein digitaler Stolz und zentrales Projekt ist der Aufbau und Betrieb meines eigenen Autonomen Systems: **AS219418 und AS215110**. 

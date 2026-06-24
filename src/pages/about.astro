@@ -1,0 +1,42 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+
+const entry = await getEntry("about", "about");
+
+if (!entry) {
+  return Astro.redirect("/404");
+}
+
+const { Content } = await entry.render();
+const { title, description } = entry.data;
+---
+
+<Layout title={`${title} | ${description}`}>
+  <Header activeNav="about" />
+  
+  <main id="main-content">
+    <section id="partner-content" class="prose max-w-3xl mx-auto pt-8 pb-12 px-4">
+      <Content />
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  #partner-content h1 {
+    @apply text-2xl font-bold tracking-wide border-b border-skin-line pb-2 mt-8 mb-4 text-skin-accent;
+  }
+  #partner-content p {
+    @apply my-3 leading-relaxed text-skin-base;
+  }
+  #partner-content blockquote {
+    @apply border-l-4 border-skin-accent/60 bg-skin-card/30 px-4 py-2 my-4 italic rounded-r;
+  }
+  #partner-content img {
+    @apply rounded-lg border border-skin-line my-6 max-w-full h-auto mx-auto;
+  }
+</style>

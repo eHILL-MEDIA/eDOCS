@@ -11,6 +11,17 @@ export const SITE: Site = {
   scheduledPostMargin: 15 * 60 * 1000,
 };
 
+export const NAV_ITEMS = [
+  {
+    href: "/partner/",
+    linkText: "Partner",
+  },
+  {
+    href: "/about/",
+    linkText: "Über mich",
+  },
+];
+
 export const LOCALE = {
   lang: "de",
   langTag: ["de-DE"], 

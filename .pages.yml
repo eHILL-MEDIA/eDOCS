@@ -1,62 +1,35 @@
-# 1. Define where uploaded media/images go
-media: public/assets
+backend:
+  name: github
+  repo: ehill-media/edocs
+  branch: main
 
-# 2. Define your papers/posts collection
+media_folder: "public/assets"
+public_folder: "/assets"
+
 content:
-  - name: posts
+  - name: blog
     label: Papers & Posts
     type: collection
-    path: src/content/blog         # AstroPaper stores posts here
-    format: yaml-frontmatter      # Tells CMS to parse the standard MD frontmatter
-    filename: "{year}-{month}-{day}-{title}.md" # Automatically formats new files
+    path: "src/content/blog"
+    format: "yaml-frontmatter"
+    filename: "{year}-{month}-{day}-{title}"Generator
+    extension: "md"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     
-    # Customize the columns shown in your dashboard list view
     view:
       fields: [title, pubDatetime, draft]
       primary: title
       sort: [pubDatetime]
       order: desc
 
-    # Map the frontmatter fields used by AstroPaper's schema
     fields:
-      - name: title
-        label: Title
-        type: string
-        required: true
-
-      - name: author
-        label: Author
-        type: string
-        default: "Your Name"
-
-      - name: pubDatetime
-        label: Publication Date
-        type: date
-        required: true
-
-      - name: modDatetime
-        label: Last Modified Date
-        type: date
-
-      - name: description
-        label: Short Summary / Abstract
-        type: string
-        required: true
-
-      - name: tags
-        label: Tags
-        type: list # Creates an array of tags (e.g., physics, astrodynamics)
-
-      - name: ogImage
-        label: Social Share Image (OG Image)
-        type: image
-
-      - name: draft
-        label: Save as Draft?
-        type: boolean
-        default: false
-
-      # The actual content area of your paper
-      - name: body
-        label: Paper Content
-        type: rich-text
+      - { name: title, label: Title, type: string, required: true }
+      - { name: author, label: Author, type: string, default: "Your Name" }
+      - { name: pubDatetime, label: Publication Date, type: datetime, required: true } # 'datetime' für valides ISO-Format
+      - { name: modDatetime, label: Last Modified Date, type: datetime, required: false }
+      - { name: description, label: Short Summary / Abstract, type: string, required: true }
+      - { name: tags, label: Tags, type: list }
+      - { name: ogImage, label: Social Share Image (OG Image), type: image, required: false }
+      - { name: draft, label: Save as Draft?, type: boolean, default: false }
+      - { name: body, label: Paper Content, type: rich-text }

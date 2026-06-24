@@ -3,21 +3,21 @@ backend:
   repo: ehill-media/edocs
   branch: main
 
-# ===== MEDIA CONFIG FIX =====
-media_folder: "public/assets"       # Physischer Ordner im Repo, wo das CMS Bilder speichert
-public_folder: "/assets"            # Der Pfad, den das CMS in die Markdown-Datei schreibt (wichtig für Astro)
-# ============================
+# 🔥 GLOBALE MEDIEN-PFADE (Müssen ganz oben auf Root-Ebene stehen)
+media_folder: "public/assets"
+public_folder: "/assets"
 
-content:
+# 🔥 REPARIERT: Decap CMS erwartet 'collections', nicht 'content'
+collections:
   - name: blog
     label: Papers & Posts
-    type: collection
-    path: "src/content/blog"
+    type: folder # Nutze 'folder' für lokale Markdown-Sammlungen
+    folder: "src/content/blog" # 'folder' bestimmt das Zielverzeichnis
     format: "yaml-frontmatter"
-    filename: "{{year}}-{{month}}-{{day}}-{{slug}}" # Fix: Nutze CMS-Tags {{}} statt Klammern {} für korrekte Benennung
     extension: "md"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    filename: "{{year}}-{{month}}-{{day}}-{{slug}}"
     
     view:
       fields: [title, pubDatetime, draft]
@@ -32,6 +32,6 @@ content:
       - { name: modDatetime, label: Last Modified Date, type: datetime, required: false }
       - { name: description, label: Short Summary / Abstract, type: string, required: true }
       - { name: tags, label: Tags, type: list }
-      - { name: ogImage, label: Social Share Image (OG Image), type: image, required: false } # Nutzt jetzt /assets/bild.jpg
+      - { name: ogImage, label: Social Share Image (OG Image), type: image, required: false }
       - { name: draft, label: Save as Draft?, type: boolean, default: false }
       - { name: body, label: Paper Content, type: rich-text }

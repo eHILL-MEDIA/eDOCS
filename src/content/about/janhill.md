@@ -39,7 +39,7 @@ Netzwerke sind nur so gut wie die Systeme, die sie verbinden. Mein Fundament lie
 
 ## 🚀 Warum dieses Projekt?
 
-Das Betreiben eines eigenen AS ist für mich weit mehr als ein Hobby – es ist die Faszination an der zugrundeliegenden Infrastruktur unseres modernen Lebens. Mit **AS219418** experimentiere ich an realen, carrier-grade Szenarien, um Ausfallsicherheit, intelligente Pfadauswahl (Traffic Engineering) und DDoS-Mitigation in der Praxis zu perfektionieren.
+Das Betreiben eines eigenen AS ist für mich weit mehr als ein Hobby – es ist die Faszination an der zugrundeliegenden Infrastruktur unseres modernen Lebens. Mit **AS219418** / **AS215110** experimentiere ich an realen, carrier-grade Szenarien, um Ausfallsicherheit, intelligente Pfadauswahl (Traffic Engineering) und DDoS-Mitigation in der Praxis zu perfektionieren.
 
 Ich glaube fest an Open-Source und den freien Wissensaustausch. Deshalb teile ich hier meine Konfigurationen, Post-Mortems und Whitepapers, um der Community etwas zurückzugeben.
 

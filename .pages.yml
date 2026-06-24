@@ -3,8 +3,10 @@ backend:
   repo: ehill-media/edocs
   branch: main
 
-media_folder: "public/assets"
-public_folder: "/assets"
+# ===== MEDIA CONFIG FIX =====
+media_folder: "public/assets"       # Physischer Ordner im Repo, wo das CMS Bilder speichert
+public_folder: "/assets"            # Der Pfad, den das CMS in die Markdown-Datei schreibt (wichtig für Astro)
+# ============================
 
 content:
   - name: blog
@@ -12,7 +14,7 @@ content:
     type: collection
     path: "src/content/blog"
     format: "yaml-frontmatter"
-    filename: "{year}-{month}-{day}-{title}"Generator
+    filename: "{{year}}-{{month}}-{{day}}-{{slug}}" # Fix: Nutze CMS-Tags {{}} statt Klammern {} für korrekte Benennung
     extension: "md"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -26,10 +28,10 @@ content:
     fields:
       - { name: title, label: Title, type: string, required: true }
       - { name: author, label: Author, type: string, default: "Your Name" }
-      - { name: pubDatetime, label: Publication Date, type: datetime, required: true } # 'datetime' für valides ISO-Format
+      - { name: pubDatetime, label: Publication Date, type: datetime, required: true }
       - { name: modDatetime, label: Last Modified Date, type: datetime, required: false }
       - { name: description, label: Short Summary / Abstract, type: string, required: true }
       - { name: tags, label: Tags, type: list }
-      - { name: ogImage, label: Social Share Image (OG Image), type: image, required: false }
+      - { name: ogImage, label: Social Share Image (OG Image), type: image, required: false } # Nutzt jetzt /assets/bild.jpg
       - { name: draft, label: Save as Draft?, type: boolean, default: false }
       - { name: body, label: Paper Content, type: rich-text }

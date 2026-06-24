@@ -2,11 +2,12 @@
 author: Jan Hill
 pubDatetime: 2026-06-24
 modDatetime: 2026-06-24
-title: HOP179 - ISP & IP-Transit
-ogImage: Hop179
-slug: partner-hop179
+title: Unsere Partner
+ogImage: Unsere Partner
+slug: partner
 featured: false
 draft: false
+description: Unsere Partner
 ---
 ![Hop179.net](/assets/eHILL/images/hop179x.jpg)
 

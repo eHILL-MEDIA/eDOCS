@@ -23,8 +23,8 @@ content:
 
   - name: partner
     label: Partner
-    type: collection
-    path: src/content/partner
+    type: file
+    path: src/content/partner/2026-06-24-hop179-isp-and-ip-transit.md
     view:
       fields: [ title, draft, date ]
     fields:

@@ -2,9 +2,9 @@ import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
   website: "https://docs.ehill.de/",
-  author: "eHILL MEDIA",
-  desc: "eDOCS - IT, Server & Netzwerkdokumentationen einfach erklärt.",
-  title: "eDOCS",
+  author: "Jan Hill",
+  desc: "eHILL - IT, Server & Netzwerkdokumentationen einfach erklärt.",
+  title: "eHILL MEDIA",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerPage: 4,

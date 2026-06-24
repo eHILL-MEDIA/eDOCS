@@ -33,8 +33,6 @@ Das Internet zu verstehen ist das eine – es selbst mitzugestalten das andere. 
 
 Netzwerke sind nur so gut wie die Systeme, die sie verbinden. Mein Fundament liegt tief im Open-Source-Ökosystem:
 
-- **System-Härtung & Performance:** Optimierung des Linux-Kernels für High-Throughput-Networking.
-- **Infrastruktur als Code (IaC):** Automatisierte Bereitstellung von Netzwerkknoten und Linux-Servern.
 - **Virtualisierung:** Sicherer Betrieb von virtualisierten Umgebungen (KVM/Proxmox) und containerisierten Applikationen.
 
 ---

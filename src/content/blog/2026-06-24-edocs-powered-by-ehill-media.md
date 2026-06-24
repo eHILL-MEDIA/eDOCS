@@ -1,11 +1,12 @@
 ---
-title: eDOCS powered by eHILL MEDIA
 author: Jan Hill
 pubDatetime: 2026-06-24
 modDatetime: 2026-06-24
-description: eDOCS ist nun Live!
-tags: edocs, ehill, media, erster, beitrag, it, server, medien
-ogImage: /public/assets/jan_hill.jpg
+title: eDOCS powered by eHILL MEDIA
+ogImage: eDOCS-LIVE
+slug: edocs-willkommen-auf-der-documentation
+featured: true
 draft: false
+description: eDOCS ist nun Live!
 ---
 s

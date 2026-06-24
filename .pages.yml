@@ -1,75 +1,62 @@
-# Medien-Verzeichnis (Astro legt statische Medien in "public")
-media:
-  input: public/assets
-  output: /assets
+# 1. Define where uploaded media/images go
+media: public/assets
 
-# Inhalts-Typen für AstroPaper
-items:
-  - type: collection
-    name: blog
-    label: 📝 Blog & Dokumente
-    path: src/content/blog
-    filename: "{year}-{month}-{day}-{slug}.md"
-    extension: md
-    format: frontmatter 
+# 2. Define your papers/posts collection
+content:
+  - name: posts
+    label: Papers & Posts
+    type: collection
+    path: src/content/blog         # AstroPaper stores posts here
+    format: yaml-frontmatter      # Tells CMS to parse the standard MD frontmatter
+    filename: "{year}-{month}-{day}-{title}.md" # Automatically formats new files
+    
+    # Customize the columns shown in your dashboard list view
+    view:
+      fields: [title, pubDatetime, draft]
+      primary: title
+      sort: [pubDatetime]
+      order: desc
+
+    # Map the frontmatter fields used by AstroPaper's schema
     fields:
       - name: title
+        label: Title
         type: string
-        label: Titel
         required: true
+
       - name: author
+        label: Author
         type: string
-        label: Autor
-        default: "Sat Naing" # Oder dein Name/Firma
+        default: "Your Name"
+
       - name: pubDatetime
+        label: Publication Date
         type: date
-        label: Veröffentlichungsdatum (ISO)
-        default: now
         required: true
+
       - name: modDatetime
+        label: Last Modified Date
         type: date
-        label: Letztes Update (Optional)
-      - name: postSlug
+
+      - name: description
+        label: Short Summary / Abstract
         type: string
-        label: Eigener URL-Slug (Optional)
-      - name: featured
-        type: boolean
-        label: Auf Startseite hervorheben?
-        default: false
-      - name: draft
-        type: boolean
-        label: Als Entwurf speichern?
-        default: false
+        required: true
+
       - name: tags
-        type: list
-        label: Tags / Schlagworte
-        default: ["allgemein"]
-      - name: description
-        type: string
-        label: Kurzbeschreibung (SEO)
-        required: true
+        label: Tags
+        type: list # Creates an array of tags (e.g., physics, astrodynamics)
+
+      - name: ogImage
+        label: Social Share Image (OG Image)
+        type: image
+
+      - name: draft
+        label: Save as Draft?
+        type: boolean
+        default: false
+
+      # The actual content area of your paper
       - name: body
+        label: Paper Content
         type: rich-text
-        label: Inhalt (Markdown Editor)
-        required: true
-
-# Website-Einstellungen (falls du die site.json nutzt, sonst weglassen)
-  - type: file
-    name: site
-    label: ⚙️ Website Einstellungen
-    path: src/_data/site.json
-    format: json
-    fields:
-      - name: title
-        type: string
-        label: Website Name
-        required: true
-      - name: description
-        type: text
-        label: Beschreibung
-
-# Verbindung zur GitHub Action für Astro
-actions:
-  - name: eDOCS
-    label: 🚀 eDOCS live schalten (Build & Deploy)
-    workflow: edocs

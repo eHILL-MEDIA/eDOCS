@@ -3,22 +3,22 @@ backend:
   repo: ehill-media/edocs
   branch: main
 
-# 🔥 GLOBALE MEDIEN-PFADE (Müssen ganz oben auf Root-Ebene stehen)
-media_folder: "public/assets"
-public_folder: "/assets"
+# ===== FIXED: Globale Medien-Pfade entfernt & Kollektions-Medien aktiviert =====
 
-# 🔥 REPARIERT: Decap CMS erwartet 'collections', nicht 'content'
 collections:
   - name: blog
     label: Papers & Posts
-    type: folder # Nutze 'folder' für lokale Markdown-Sammlungen
-    folder: "src/content/blog" # 'folder' bestimmt das Zielverzeichnis
+    type: folder
+    folder: "src/content/blog"
     format: "yaml-frontmatter"
     extension: "md"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     filename: "{{year}}-{{month}}-{{day}}-{{slug}}"
     
+    media_folder: ""              # Leer lassen = Bilder landen im selben Ordner wie die .md Datei
+    public_folder: ""             # Leer lassen = Relative Pfade im Frontmatter (z.B. "./bild.jpg")
+
     view:
       fields: [title, pubDatetime, draft]
       primary: title

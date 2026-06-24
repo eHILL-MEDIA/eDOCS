@@ -4,7 +4,7 @@ import Hr from "./Hr.astro";
 import LinkButton from "./LinkButton.astro";
 
 export interface Props {
-  activeNav?: "posts" | "tags" | "about" | "search";
+  activeNav?: "posts" | "tags" | "partner" | "about" | "search";
 }
 
 const { activeNav } = Astro.props;
@@ -66,8 +66,13 @@ const { activeNav } = Astro.props;
             </a>
           </li>
           <li>
+            <a href="/partner/" class={activeNav === "partner" ? "active" : ""}>
+              Partner
+            </a>
+          </li>
+          <li>
             <a href="/about/" class={activeNav === "about" ? "active" : ""}>
-              About
+              Über mich
             </a>
           </li>
           <li>
@@ -191,7 +196,6 @@ const { activeNav } = Astro.props;
 
 <script>
   function toggleNav() {
-    // Toggle menu
     const menuBtn = document.querySelector(".hamburger-menu");
     const menuIcon = document.querySelector(".menu-icon");
     const menuItems = document.querySelector("#menu-items");
@@ -209,7 +213,5 @@ const { activeNav } = Astro.props;
   }
 
   toggleNav();
-
-  // Runs on view transitions navigation
   document.addEventListener("astro:after-swap", toggleNav);
 </script>

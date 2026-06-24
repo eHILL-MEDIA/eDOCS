@@ -81,11 +81,3 @@ mount -a
 ```
 
 Damit wird die Festplatte sofort gemountet und beim nächsten Boot automatisch eingebunden.
-
-© 2025 [eHILL.de](http://eHILL.de) – Alle Rechte vorbehalten.
-
-[Impressum](https://ehill.de/page/impressum)
-
-[Datenschutz](https://ehill.de/page/impressum)
-
-Erste

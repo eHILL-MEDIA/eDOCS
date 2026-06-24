@@ -2,8 +2,8 @@
 author: Jan Hill
 pubDatetime: 2026-06-24
 modDatetime: 2026-06-24
-title: openvpn-tutorial
-ogImage: OpenVPN - Linux einrichten, so geht's
+title: OpenVPN - Linux einrichten, so geht's!
+ogImage: OpenVPN - Linux einrichten, so geht's!
 slug: openvpn-tutorial
 featured: false
 draft: false

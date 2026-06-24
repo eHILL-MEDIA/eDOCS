@@ -21,7 +21,7 @@ description: In diesem Tutorial zeigen wir, wie man eine bestehende Festplatte
 
 ![](/assets/eHILL/images/firefox_5N7AFANJpH.png)
 
- 
+
 
 ---
 
@@ -63,11 +63,18 @@ Mit `lsblk -lf /dev/<device>` lassen sich Partition und UUID auslesen. Die UUID 
 ## Festplatte dauerhaft in Linux eintragen
 
 ```
-apt-get install nano -y
 nano /etc/fstab
+```
+
+
+
+```
+nano /etc/fstab
+```
+
+```
 # In der fstab folgende Zeile eintragen:
 UUID=27697732-0ff8-45cd-a597-41bee4af4eeb /mnt/mountpath ext4 defaults 0 0
-
 ```
 
 Wichtig: Die Eintragung erfolgt in der Datei `/etc/fstab`, am besten über den Editor `nano`.
@@ -76,7 +83,15 @@ Wichtig: Die Eintragung erfolgt in der Datei `/etc/fstab`, am besten über den E
 
 ```
 mkdir -p /mnt/mountpath
+```
+
+```
 systemctl daemon-reload
+```
+
+
+
+```
 mount -a
 ```
 

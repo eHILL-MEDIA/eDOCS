@@ -1,12 +1,11 @@
 ---
 title: Willkommen bei eDOCS
-pubDatetime: 2026-06-24T00:00:00Z
 author: eHILL MEDIA
+pubDatetime: 2026-06-24
+modDatetime: 2026-06-24
 description: Das eDOCS-System läuft nun offiziell über AstroPaper und Pages CMS.
-featured: true
-draft: false
+draft: true
 ---
-
 # Hallo Welt!
 
 Die Einrichtung ist abgeschlossen.

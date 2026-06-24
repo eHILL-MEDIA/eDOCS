@@ -11,7 +11,7 @@ items:
     path: src/content/blog
     filename: "{year}-{month}-{day}-{slug}.md"
     extension: md
-    format: frontmatter
+    format: frontmatter 
     fields:
       - name: title
         type: string

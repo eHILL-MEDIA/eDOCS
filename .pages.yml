@@ -1,37 +1,62 @@
-backend:
-  name: github
-  repo: ehill-media/edocs
-  branch: main
+# 1. Define where uploaded media/images go
+media: public/assets
 
-# ===== FIXED: Globale Medien-Pfade entfernt & Kollektions-Medien aktiviert =====
-
-collections:
-  - name: blog
+# 2. Define your papers/posts collection
+content:
+  - name: posts
     label: Papers & Posts
-    type: folder
-    folder: "src/content/blog"
-    format: "yaml-frontmatter"
-    extension: "md"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    filename: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    type: collection
+    path: src/content/blog         # AstroPaper stores posts here
+    format: yaml-frontmatter      # Tells CMS to parse the standard MD frontmatter
+    filename: "{year}-{month}-{day}-{title}.md" # Automatically formats new files
     
-    media_folder: ""              # Leer lassen = Bilder landen im selben Ordner wie die .md Datei
-    public_folder: ""             # Leer lassen = Relative Pfade im Frontmatter (z.B. "./bild.jpg")
-
+    # Customize the columns shown in your dashboard list view
     view:
       fields: [title, pubDatetime, draft]
       primary: title
       sort: [pubDatetime]
       order: desc
 
+    # Map the frontmatter fields used by AstroPaper's schema
     fields:
-      - { name: title, label: Title, type: string, required: true }
-      - { name: author, label: Author, type: string, default: "Your Name" }
-      - { name: pubDatetime, label: Publication Date, type: datetime, required: true }
-      - { name: modDatetime, label: Last Modified Date, type: datetime, required: false }
-      - { name: description, label: Short Summary / Abstract, type: string, required: true }
-      - { name: tags, label: Tags, type: list }
-      - { name: ogImage, label: Social Share Image (OG Image), type: image, required: false }
-      - { name: draft, label: Save as Draft?, type: boolean, default: false }
-      - { name: body, label: Paper Content, type: rich-text }
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: author
+        label: Author
+        type: string
+        default: "Your Name"
+
+      - name: pubDatetime
+        label: Publication Date
+        type: date
+        required: true
+
+      - name: modDatetime
+        label: Last Modified Date
+        type: date
+
+      - name: description
+        label: Short Summary / Abstract
+        type: string
+        required: true
+
+      - name: tags
+        label: Tags
+        type: list # Creates an array of tags (e.g., physics, astrodynamics)
+
+      - name: ogImage
+        label: Social Share Image (OG Image)
+        type: image
+
+      - name: draft
+        label: Save as Draft?
+        type: boolean
+        default: false
+
+      # The actual content area of your paper
+      - name: body
+        label: Paper Content
+        type: rich-text
